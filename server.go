@@ -33,9 +33,7 @@ func foo_function(w http.ResponseWriter, r *http.Request) {
 
 
 func main() {
-    foo_function_handler := http.HandlerFunc(foo_function)
-    
     // we won't use http.HandleFunc because the middleware is returning an http.Handler object
-    http.Handle("/foo", myMiddleware(foo_function_handler))
+    http.Handle("/foo", myMiddleware(http.HandlerFunc(foo_function)))
     log.Fatal(http.ListenAndServe(":3000", nil))
 }
