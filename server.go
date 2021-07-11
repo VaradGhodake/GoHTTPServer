@@ -13,6 +13,7 @@ func myMiddleware(handler http.Handler) http.Handler {
     // here, use anonymous function syntax and return an http.Handler object
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
             // before processing
+            log.Println("Started req processing at ", time.Now().Format(time.RFC850))
 
             // let's sleep for 5 seconds to simulate middleware functionality
             time.Sleep(5 * time.Second)
@@ -20,6 +21,7 @@ func myMiddleware(handler http.Handler) http.Handler {
             handler.ServeHTTP(w, r)
 
             // after processing
+            log.Println("Ended req processing at ", time.Now().Format(time.RFC850))
     })
 }
 
