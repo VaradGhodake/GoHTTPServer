@@ -1,3 +1,3 @@
-module github.com/VaradGhodake/GoHTTPServer.git
+module github.com/VaradGhodake/GoHTTPServer
 
 go 1.13
