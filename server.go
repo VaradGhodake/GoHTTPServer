@@ -5,6 +5,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"time"
 )
 
 // wrap our http.Handler
@@ -12,7 +13,9 @@ func myMiddleware(handler http.Handler) http.Handler {
     // here, use anonymous function syntax and return an http.Handler object
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
             // before processing
-            
+
+            // let's sleep for 5 seconds to simulate middleware functionality
+            time.Sleep(5 * time.Second)
             // http.handler will have this method to satisfy the Handler interface
             handler.ServeHTTP(w, r)
 
